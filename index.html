@@ -8,12 +8,17 @@
 <body>
   <main>
     <div>
-      <input type="text" />
-      <button>Adicionar</button>
+      <label for="descricao">
+        Nova Tarefa:
+      </label>
+      <input id="descricao" name="descricao" type="text" />
+      <button onclick="adicionaTarefa()">
+        Adicionar
+      </button>
     </div>
-    <div>
+    <ul id="lista">
       <!-- Lista de tarefas -->
-    </div>
+    </ul>
   </main>
   <script src="./script.js"></script>
 </body>
