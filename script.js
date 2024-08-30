@@ -29,4 +29,6 @@ function removeTarefa(evento) {
   }
 };
 
+document.querySelector("button").addEventListener("click", adicionaTarefa);
+
 document.addEventListener("dblclick", removeTarefa);
