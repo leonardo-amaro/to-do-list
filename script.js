@@ -1,22 +1,23 @@
+const lista = document.querySelector("#lista");
+const descricao = document.querySelector("#descricao");
+const tarefas = JSON.parse(localStorage.getItem("tarefas")) || [];
+
 function adicionaTarefa() {
-  let tarefa = document.querySelector("#descricao");
-  if(tarefa.value.trim() == "") {
+  if(descricao.value.trim() == "") {
     window.alert("ATENÇÃO: Tarefas precisam ter uma descrição!");
   } else {
-    let lista = document.querySelector("#lista");
     let li = document.createElement("li");
-    li.innerHTML = `${tarefa.value.trim()}`;
+    li.innerHTML = `${descricao.value.trim()}`;
     lista.appendChild(li);
-    tarefa.value = "";
+    descricao.value = "";
   }
 };
 
 function removeTarefa(evento) {
   try {
-    let lista = document.querySelector("#lista");
     lista.removeChild(evento.target);
-  } catch(error) {
-    console.error("Operação inválida");
+  } catch(e) {
+    console.error("Operação inválida:", e);
   }
 };
 
