@@ -35,6 +35,8 @@ function removeTarefa(evento) {
   }
 };
 
+document.addEventListener("DOMContentLoaded", atualizaLista);
+
 document.querySelector("button").addEventListener("click", () => {
   lista.innerHTML = "";
   adicionaTarefa();
