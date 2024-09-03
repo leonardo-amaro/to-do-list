@@ -14,11 +14,17 @@ function adicionaTarefa() {
   if(descricao.value.trim() == "") {
     window.alert("ATENÇÃO: Tarefas precisam ter uma descrição!");
   } else {
-    let li = document.createElement("li");
-    li.innerHTML = `${descricao.value.trim()}`;
-    lista.appendChild(li);
+    armazenaTarefa(descricao.value);
     descricao.value = "";
   }
+};
+
+function atualizaLista() {
+  tarefas.forEach(elemento => {
+    let li = document.createElement("li");
+    li.innerHTML = `${elemento["tarefa"]}`;
+    lista.appendChild(li);
+  });
 };
 
 function removeTarefa(evento) {
@@ -29,6 +35,10 @@ function removeTarefa(evento) {
   }
 };
 
-document.querySelector("button").addEventListener("click", adicionaTarefa);
+document.querySelector("button").addEventListener("click", () => {
+  lista.innerHTML = "";
+  adicionaTarefa();
+  atualizaLista();
+});
 
 document.addEventListener("dblclick", removeTarefa);
