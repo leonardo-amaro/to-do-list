@@ -28,11 +28,14 @@ function atualizaLista() {
 };
 
 function removeTarefa(evento) {
-  try {
-    lista.removeChild(evento.target);
-  } catch(e) {
-    console.error("Operação inválida:", e);
-  }
+  let tarefaParaRemover = evento.target.innerHTML;
+  let novaLista = [];
+  tarefas.forEach((tarefa) => {
+    if (tarefa.tarefa != tarefaParaRemover) {
+      novaLista.push(tarefa);
+    }
+  });
+  localStorage.setItem("tarefas", JSON.stringify(novaLista));
 };
 
 document.addEventListener("DOMContentLoaded", atualizaLista);
@@ -43,4 +46,8 @@ document.querySelector("button").addEventListener("click", () => {
   atualizaLista();
 });
 
-document.addEventListener("dblclick", removeTarefa);
+document.addEventListener("dblclick", (evento) => {
+  lista.innerHTML = "";
+  removeTarefa(evento);
+  location.reload();
+});
